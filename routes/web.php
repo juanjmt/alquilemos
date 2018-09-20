@@ -32,4 +32,8 @@ Route::get('/name/{name}/lastname/{lastname?}',function($name,$lastname='apellid
 	return 'Hola Soy '.$name.' '.$lastname;
 });
 
+Route::get('prueba/{name}','PruebaController@prueba');
+
+Route::resource('docente','DocenteController');
+
 
