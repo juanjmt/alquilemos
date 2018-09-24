@@ -14,7 +14,8 @@ class DocenteController extends Controller
      */
     public function index()
     {
-        echo 'aca va el listado de los docentes';
+        $docentes= Docente::all();
+        return view('docentes.index',compact('docentes'));
     }
 
     /**
@@ -42,11 +43,20 @@ class DocenteController extends Controller
         //con este solo muestra uno de los valores
 
         // se declara una nueva instancia 
+
+        // para el tratado de archivo subir archivo al servidor
+        if ($request->hasfile('avatar')){
+            $file=$request->file('avatar');
+            $name=time().$file->getClientOriginalName();
+            $file->move(public_path().'/images/',$name);
+        }
         $docente = new Docente;
 
         $docente->nombres=$request->input('nombres');
         $docente->documento=$request->input('documento');
         $docente->apellidos=$request->input('apellidos');
+        $docente->avatar=$name;
+
         $docente->save();
         //return $request->input('documento');
 
@@ -59,9 +69,16 @@ class DocenteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Docente $docente)
     {
+
+        // para buscar por slug o me imagino cualquier tipo de campo
+        //$docente=Docente::where('slug','=',$slug)->firstOrFail();
         //
+        //para buscar por id
+        //$docente= Docente::find($id);
+
+        return view('docentes.show',compact('docente'));
     }
 
     /**

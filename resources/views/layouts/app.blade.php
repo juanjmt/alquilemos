@@ -15,7 +15,12 @@
 
 </head>
 <body>
+	<nav class="navbar navbar-dark bg-primary" style="height: 45px;">
+		<a href="#" class="navbar-brand">JAcademic</a>
+	</nav>
 	<div class="container">
+		
+		<div style="clear:both; height:30px;"> </div>
 		@yield('content')
 	</div>
 	

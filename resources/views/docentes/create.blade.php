@@ -3,7 +3,7 @@
 @section('title','Docentes Create')
 
 @section('content')
-	<form class="form-group" action="/docente" method="POST">
+	<form class="form-group" action="/docente" method="POST" enctype="multipart/form-data" >
 		 {{csrf_field()}}
 		<div class="form-group">
 			<label for="">Documento:</label>
@@ -17,22 +17,12 @@
 			<label for="">Apellidos:</label>
 			<input type="text" class="form-control" name="apellidos" id="apellidos" />
 		</div>
+		<div class="form-group">
+			<label for="">Avatar:</label>
+			<input type="file"  name="avatar" id="avatar" />
+		</div>
 		<button type="submit" class="btn btn-primary" style="text-align: center;">Save</button>
 	</form>
 
 @endsection
 
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Academic</title>
-
-</head>
-<body>
-	<div class="container">
-		
-	</div>
-
-</body>
-</html>-->

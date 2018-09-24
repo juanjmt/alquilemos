@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDocenteTable extends Migration
+class AddAvatarToDocenteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateDocenteTable extends Migration
      */
     public function up()
     {
-        Schema::create('docentes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('documento');
-            $table->string('nombres');
-            $table->string('apellidos');
-
-            $table->timestamps();
+        Schema::table('docentes', function (Blueprint $table) {
+            //
+            $table->string('avatar');
         });
     }
 
@@ -30,6 +26,8 @@ class CreateDocenteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('docentes');
+        Schema::table('docentes', function (Blueprint $table) {
+            //
+        });
     }
 }
