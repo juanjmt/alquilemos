@@ -87,9 +87,12 @@ class DocenteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Docente $docente)
     {
         //
+        return view('docentes.edit',compact('docente'));
+
+        //return $docente;
     }
 
     /**
@@ -99,9 +102,19 @@ class DocenteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Docente $docente)
     {
         //
+        $docente->fill($request->except('avatar'));
+        //$docente->fill($request->all());
+        if ($request->hasfile('avatar')){
+            $file=$request->file('avatar');
+            $name=time().$file->getClientOriginalName();
+            $file->move(public_path().'/images/',$name);
+            $docente->avatar=$name;
+        }
+        $docente->save();
+        return 'Updated';
     }
 
     /**

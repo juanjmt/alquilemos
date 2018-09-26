@@ -19,5 +19,6 @@
 				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 			</p>
+			<a href="/docente/{{$docente->slug}}/edit" class="btn btn-primary text-center"> Editar </a>
 	</div>
 @endsection
