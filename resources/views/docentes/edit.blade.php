@@ -3,6 +3,13 @@
 @section('title','Docentes Edit')
 
 @section('content')
+	{!! Form::model($docente,['route' => ['docente.update',$docente],  'method' => 'PUT', 'files'=>true]) !!}
+		@include('docentes.form')
+		{!! Form::submit('Editar',['class'=>'btn btn-primary'])!!}
+		
+	
+	{!! Form::close() !!}
+	<!-- 
 	<form class="form-group" action="/docente/{{$docente->slug}}" method="POST" enctype="multipart/form-data" >
 		{{csrf_field()}}
 		{{ method_field('PUT') }}
@@ -26,6 +33,8 @@
 		</div>
 		<button type="submit" class="btn btn-primary" style="text-align: center;">Update</button>
 	</form>
+
+-->
 
 @endsection
 

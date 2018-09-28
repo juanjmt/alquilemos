@@ -4,6 +4,10 @@ namespace alquilemos\Http\Controllers;
 
 use alquilemos\Docente;
 use Illuminate\Http\Request;
+use alquilemos\Http\Requests\StoreDocenteRequest;
+
+
+
 
 class DocenteController extends Controller
 {
@@ -35,8 +39,11 @@ class DocenteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    //public function store(Request $request)
+    public function store(StoreDocenteRequest $request)
     {
+
+        
         // para enviar o mostrar todo lo que recibe pos rescu
         // return $request->all();
 
@@ -55,6 +62,7 @@ class DocenteController extends Controller
         $docente->nombres=$request->input('nombres');
         $docente->documento=$request->input('documento');
         $docente->apellidos=$request->input('apellidos');
+        $docente->slug=$request->input('slug');
         $docente->avatar=$name;
 
         $docente->save();
@@ -123,8 +131,12 @@ class DocenteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Docente $docente)
     {
         //
+        $docente->delete();
+        $file_path=public_path().'/images/'.$docente->avatar;
+        \File::delete($file_path);
+        return 'Deleted';
     }
 }

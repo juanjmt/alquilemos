@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Docente extends Model
 {
-	protected $fillable=['documento','nombres','apellidos','avatar'];
+	protected $fillable=['documento','nombres','apellidos','avatar','slug'];
         /**
 			Get the route key for the model.
 			@return string

@@ -20,5 +20,9 @@
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 			</p>
 			<a href="/docente/{{$docente->slug}}/edit" class="btn btn-primary text-center"> Editar </a>
+			{!! Form::open(['route'=>['docente.destroy',$docente->slug],'method'=>'DELETE']) !!}
+				{!! Form::submit('Eliminar',['class'=>'btn btn-danger']) !!}
+			{!! Form::close() !!}
+
 	</div>
 @endsection

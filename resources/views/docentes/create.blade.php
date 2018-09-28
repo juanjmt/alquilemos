@@ -3,6 +3,21 @@
 @section('title','Docentes Create')
 
 @section('content')
+	<!-- se hizo el formulario utilizando laravel collective -->
+	<!-- aca va la validacion -->
+	@if($errors->any())
+		@foreach($errors->all() as $error)
+			<div class="alert alert-danger">
+			<p>{{ $error }}</p>
+			</div>
+		@endforeach
+	@endif
+	{!! Form::open(['route' => 'docente.store', 'method' => 'POST', 'files'=>true]) !!}
+			@include('docentes.form')
+		{!! Form::submit('Guardar',['class'=>'btn btn-primary'])!!}
+		
+	{!! Form::close() !!}
+	<!--
 	<form class="form-group" action="/docente" method="POST" enctype="multipart/form-data" >
 		 {{csrf_field()}}
 		<div class="form-group">
@@ -22,7 +37,7 @@
 			<input type="file"  name="avatar" id="avatar" />
 		</div>
 		<button type="submit" class="btn btn-primary" style="text-align: center;">Save</button>
-	</form>
+	</form> 
 
 @endsection
 
