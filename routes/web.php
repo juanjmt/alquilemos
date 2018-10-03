@@ -36,4 +36,6 @@ Route::get('prueba/{name}','PruebaController@prueba');
 
 Route::resource('docente','DocenteController');
 
+Route::resource('curso','CursoController');
+
 

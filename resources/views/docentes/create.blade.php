@@ -5,13 +5,8 @@
 @section('content')
 	<!-- se hizo el formulario utilizando laravel collective -->
 	<!-- aca va la validacion -->
-	@if($errors->any())
-		@foreach($errors->all() as $error)
-			<div class="alert alert-danger">
-			<p>{{ $error }}</p>
-			</div>
-		@endforeach
-	@endif
+	@include('common.error')
+	@include('common.success')
 	{!! Form::open(['route' => 'docente.store', 'method' => 'POST', 'files'=>true]) !!}
 			@include('docentes.form')
 		{!! Form::submit('Guardar',['class'=>'btn btn-primary'])!!}

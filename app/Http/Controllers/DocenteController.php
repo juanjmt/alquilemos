@@ -68,7 +68,8 @@ class DocenteController extends Controller
         $docente->save();
         //return $request->input('documento');
 
-        return 'Saved';
+        //return 'Saved';
+       return redirect()->route('docente.index');
     }
 
     /**
@@ -122,7 +123,7 @@ class DocenteController extends Controller
             $docente->avatar=$name;
         }
         $docente->save();
-        return 'Updated';
+        return redirect()->route('docente.show',[$docente])->with('status','Docente actualizado correctamente');
     }
 
     /**
@@ -137,6 +138,7 @@ class DocenteController extends Controller
         $docente->delete();
         $file_path=public_path().'/images/'.$docente->avatar;
         \File::delete($file_path);
-        return 'Deleted';
+        //return 'Deleted';
+        return redirect()->route('docente.index');
     }
 }

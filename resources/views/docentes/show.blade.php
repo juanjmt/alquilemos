@@ -3,6 +3,9 @@
 @section('title','Docentes List')
 
 @section('content')
+	@include('common.error')
+	@include('common.success')
+	
 	<div class="row">
 		<img class="rounded-circle mx-auto" src="/images/{{$docente->avatar}}" style="width: 250px; height: 250px; background-color: #EFEFEF; margin: 20px;" >
 	</div>
