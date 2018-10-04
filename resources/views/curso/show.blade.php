@@ -3,7 +3,8 @@
 @section('title','Listado de Cursos')
 
 @section('content')
-
+	@include('common.error')
+	@include('common.success')
 	
 	<div class="row">
 		<img class="mx-auto" src="/images/{{$curso->logo}}" style="width: 250px; height: 250px;  margin: 20px;" >

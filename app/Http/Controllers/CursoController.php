@@ -4,6 +4,8 @@ namespace alquilemos\Http\Controllers;
 
 use Illuminate\Http\Request;
 use alquilemos\curso; //este es el modelo
+use alquilemos\Http\Requests\StoreCursoRequest;
+
 
 class CursoController extends Controller
 {
@@ -36,7 +38,7 @@ class CursoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCursoRequest $request)
     {
         if ($request->hasfile('logo')){
             $file=$request->file('logo');
@@ -55,7 +57,7 @@ class CursoController extends Controller
         //return $request->input('documento');
 
         //return 'Saved';
-        return redirect()->route('curso.index');
+        return redirect()->route('curso.index')->with('status','Curso agregado correctamente');;
         
     }
 
@@ -92,7 +94,7 @@ class CursoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, curso $curso)
+    public function update(StoreCursoRequest $request, curso $curso)
     {
         //
 
@@ -104,7 +106,7 @@ class CursoController extends Controller
             $curso->logo=$name;
         }
         $curso->save();
-        return redirect()->route('curso.show',[$curso]);
+        return redirect()->route('curso.show',[$curso])->with('status','Curso actualizado correctamente');;
     }
 
     /**
@@ -120,6 +122,6 @@ class CursoController extends Controller
         $file_path=public_path().'/images/'.$curso->logo;
         \File::delete($file_path);
         //return 'Deleted';
-        return redirect()->route('curso.index');
+        return redirect()->route('curso.index')->with('status','Curso eliminado correctamente');
     }
 }
