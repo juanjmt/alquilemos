@@ -22,10 +22,17 @@
 				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 			</p>
-			<a href="/docente/{{$docente->slug}}/edit" class="btn btn-primary text-center"> Editar </a>
-			{!! Form::open(['route'=>['docente.destroy',$docente->slug],'method'=>'DELETE']) !!}
-				{!! Form::submit('Eliminar',['class'=>'btn btn-danger']) !!}
-			{!! Form::close() !!}
-
+			
+			
 	</div>
+	{!! Form::open(['route'=>['docente.destroy',$docente->slug],'method'=>'DELETE']) !!}
+	<div class="row">
+			<div class="col-sm">
+				<a href="/docente/{{$docente->slug}}/edit" class="btn btn-primary text-center"> Editar </a>
+			</div> 
+			<div class="col-sm">
+				{!! Form::submit('Eliminar',['class'=>'btn btn-danger']) !!}
+			</div>
+	</div>
+	{!! Form::close() !!}
 @endsection

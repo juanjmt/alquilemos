@@ -5,6 +5,9 @@
 @section('content')
 	@include('common.error')
 	@include('common.success')
+	<example-component> </example-component>
+	
+	<!--
 	<div class="row">
 		@foreach($curso as $curso)
 			<div class="col-sm">
@@ -22,4 +25,5 @@
 			</div>
 		@endforeach
 	</div>
+	-->
 @endsection
